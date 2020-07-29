@@ -1,0 +1,54 @@
+cc_defaults {
+    name: "erofs-utils_defaults",
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+	"-Wno-ignored-qualifiers",
+	"-Wno-pointer-arith",
+	"-Wno-unused-parameter",
+	"-DPACKAGE_VERSION=\"1.1\"",
+	"-DHAVE_FALLOCATE",
+	"-DHAVE_LINUX_TYPES_H",
+	"-DHAVE_LIBSELINUX",
+	"-DHAVE_LIBUUID",
+	"-DLZ4_ENABLED",
+	"-DLZ4HC_ENABLED",
+	"-DWITH_ANDROID",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "external/e2fsprogs/lib/",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libext2_uuid",
+        "libselinux",
+    ],
+    static_libs: [
+        "liblz4",
+    ],
+}
+
+cc_binary_host {
+    name: "mkfs.erofs",
+
+    defaults: ["erofs-utils_defaults"],
+
+    srcs: [
+        "lib/*.c",
+	"mkfs/*.c",
+    ],
+}
+
+sh_binary_host {
+    name: "mkerofsimage.sh",
+    src: "mkerofsimage.sh",
+    required: [
+        "img2simg",
+        "mkfs.erofs",
+    ],
+}
+
