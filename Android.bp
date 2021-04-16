@@ -28,7 +28,7 @@ cc_defaults {
         "libselinux",
     ],
     static_libs: [
-        "liblz4",
+        "liblz4_erofs",
     ],
 }
 
