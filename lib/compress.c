@@ -18,6 +18,7 @@
 #include "erofs/cache.h"
 #include "erofs/compress.h"
 #include "compressor.h"
+#include "erofs/block_list.h"
 
 static struct erofs_compress compresshandle;
 static int compressionlevel;
@@ -481,6 +482,8 @@ int erofs_write_compressed_file(struct erofs_inode *inode)
 							  legacymetasize, 12);
 		DBG_BUGON(ret);
 	}
+
+	erofs_droid_blocklist_write(inode, blkaddr, compressed_blocks);
 	return 0;
 
 err_bdrop:
