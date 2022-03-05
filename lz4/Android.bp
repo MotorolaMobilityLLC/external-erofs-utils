@@ -1,0 +1,27 @@
+// Copyright (C) 2015 The Android Open Source Project
+
+// lz4-1.9.2 from android mainline external/lz4/lib/
+
+cc_library {
+    name: "liblz4_erofs",
+    recovery_available: true,
+    host_supported: true,
+    // TODO(b/153609531): remove when no longer needed.
+    native_bridge_supported: true,
+    target: {
+        windows: {
+            enabled: true,
+            shared: {
+                enabled: false,
+            },
+        },
+    },
+    srcs: [
+        "lz4.c",
+        "lz4hc.c",
+        "lz4frame.c",
+        "xxhash.c",
+    ],
+    cflags: ["-Wall", "-Werror"],
+    export_include_dirs: ["."],
+}
