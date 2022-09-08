@@ -13,9 +13,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package {
-    default_applicable_licenses: ["external_erofs-utils_license"],
-}
+//package {
+//    default_applicable_licenses: ["external_erofs-utils_license"],
+//}
 
 // Added automatically by a large-scale-change that took the approach of
 // 'apply every license found to every target'. While this makes sure we respect
@@ -31,18 +31,18 @@ package {
 // to attach the license to, and including a comment whether the files may be
 // used in the current project.
 // See: http://go/android-license-faq
-license {
-    name: "external_erofs-utils_license",
-    visibility: [":__subpackages__"],
-    license_kinds: [
-        "SPDX-license-identifier-GPL",
-        "SPDX-license-identifier-GPL-2.0",
-        "SPDX-license-identifier-LGPL",
-    ],
-    license_text: [
-        "COPYING",
-    ],
-}
+//license {
+//    name: "external_erofs-utils_license",
+//    visibility: [":__subpackages__"],
+//    license_kinds: [
+//        "SPDX-license-identifier-GPL",
+//        "SPDX-license-identifier-GPL-2.0",
+//        "SPDX-license-identifier-LGPL",
+//    ],
+//    license_text: [
+//        "COPYING",
+//    ],
+//}
 
 genrule {
     name: "erofs-utils-version.h",
